@@ -39,7 +39,7 @@ class ProfileFormType extends CreationFormType
             'constraints' => new UserPassword(),
         ));
     }
-        
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

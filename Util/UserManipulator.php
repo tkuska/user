@@ -35,13 +35,13 @@ class UserManipulator
     /**
      * Creates a user and returns it.
      *
-     * @param string  $username
-     * @param string  $password
-     * @param string  $email
-     * @param string  $name
-     * @param string  $lastName
-     * @param Boolean $active
-     * @param Boolean $superadmin
+     * @param string $username
+     * @param string $password
+     * @param string $email
+     * @param string $name
+     * @param string $lastName
+     * @param bool   $active
+     * @param bool   $superadmin
      *
      * @return \FOS\UserBundle\Model\UserInterface
      */

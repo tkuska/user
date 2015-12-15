@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
                 ->end();
         $this->addCreationSection($rootNode);
         $this->addEditionSection($rootNode);
-        
+
         return $treeBuilder;
     }
 
@@ -73,7 +73,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end();
     }
-    
+
     private function addEditionSection(ArrayNodeDefinition $node)
     {
         $node

@@ -23,7 +23,7 @@ class CreationFormType extends AbstractType
     {
         $builder
                 ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'TkuskaUserBundle'))
-                ->add('lastName', null, array('label' => 'form.lastName', 'translation_domain' => 'TkuskaUserBundle'))
+                ->add('lastName', null, array('label' => 'form.last_name', 'translation_domain' => 'TkuskaUserBundle'))
                 ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
                 ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
         ;

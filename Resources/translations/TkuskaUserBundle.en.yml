@@ -1,0 +1,4 @@
+form:
+    name: Name
+    last_name: 'Last name'
+    locked: 'Account locked'

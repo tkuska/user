@@ -1,0 +1,4 @@
+form:
+    name: Imię
+    last_name: Nazwisko
+    locked: 'Konto zablokowane'

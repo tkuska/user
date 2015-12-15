@@ -46,7 +46,7 @@ final class TkuskaUserEvents
      * The event listener method receives a FOS\UserBundle\Event\FilterUserResponseEvent instance.
      */
     const CREATION_CONFIRMED = 'tkuska_user.creation.confirmed';
-    
+
     /**
      * The EDITION_INITIALIZE event occurs when the edition process is initialized.
      *

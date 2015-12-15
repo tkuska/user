@@ -20,14 +20,14 @@ class EditionFormType extends AbstractType
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {         
+    {
         $builder
                 ->setMethod('PUT')
                 ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'TkuskaUserBundle'))
-                ->add('lastName', null, array('label' => 'form.lastName', 'translation_domain' => 'TkuskaUserBundle'))
+                ->add('lastName', null, array('label' => 'form.last_name', 'translation_domain' => 'TkuskaUserBundle'))
                 ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
                 ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-                ->add('locked', null, array('label' => 'Konto zablokowane', 'required' => false))
+                ->add('locked', null, array('label' => 'form.locked', 'required' => false))
         ;
     }
 

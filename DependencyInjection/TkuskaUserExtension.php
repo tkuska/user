@@ -17,7 +17,7 @@ use FOS\UserBundle\DependencyInjection\FOSUserExtension;
 class TkuskaUserExtension extends FOSUserExtension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -49,7 +49,7 @@ class TkuskaUserExtension extends FOSUserExtension
             'form' => 'tkuska_user.creation.form.%s',
         ));
     }
-    
+
     private function loadEdition(array $config, ContainerBuilder $container, XmlFileLoader $loader)
     {
         $loader->load('edition.xml');
