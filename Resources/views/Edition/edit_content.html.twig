@@ -1,0 +1,8 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form,  {'action': path('tkuska_user_edition_edit', {username: user.username})}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'edition.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}

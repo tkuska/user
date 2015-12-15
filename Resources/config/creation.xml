@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="tkuska_user.creation.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
+            <argument>%tkuska_user.creation.form.name%</argument>
+            <argument>%tkuska_user.creation.form.type%</argument>
+            <argument>%tkuska_user.creation.form.validation_groups%</argument>
+        </service>
+
+        <service id="tkuska_user.creation.form.type" class="Tkuska\UserBundle\Form\Type\CreationFormType">
+            <tag name="form.type" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
+
+        <!--Listenera też musimy nadpisać bo dopieru totaj generujemy hasło-->
+        <service id="tkuska_user.listener.email_confirmation" class="Tkuska\UserBundle\EventListener\EmailConfirmationListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="tkuska_user.mailer.default" />
+            <argument type="service" id="fos_user.util.token_generator" />
+            <argument type="service" id="router" />
+            <argument type="service" id="session" />
+            <argument>%tkuska_user.creation.force_change_password%</argument>
+        </service>
+
+        <!--Mailera tez musimy nadpisać bo przekazujemy tam jeszcze hasło-->
+        <service id="tkuska_user.mailer.default" class="Tkuska\UserBundle\Mailer\Mailer" public="false">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="templating" />
+            <argument type="collection">
+                <argument key="creation.template">%tkuska_user.creation.confirmation.template%</argument>
+                <argument key="from_email" type="collection">
+                    <argument key="creation">%tkuska_user.creation.confirmation.from_email%</argument>
+                </argument>
+            </argument>
+        </service>
+
+        <service id="tkuska_user.listener.flash" class="Tkuska\UserBundle\EventListener\FlashListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="session" />
+        </service>
+    </services>
+</container>

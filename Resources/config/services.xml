@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="tkuska_user.force_password_change.class">Tkuska\UserBundle\EventListener\ForcePasswordChange</parameter>
+        <parameter key="tkuska_user.password_change_listener.class">Tkuska\UserBundle\EventListener\PasswordChangeListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="tkuska_user.forcepasswordchange" class="%tkuska_user.force_password_change.class%">
+            <argument type="service" id="router" />
+            <argument type="service" id="security.authorization_checker" />
+            <argument type="service"  id="security.token_storage" />
+            <argument type="service" id="session" />
+            <tag name="kernel.event_listener" event="kernel.request" method="onCheckStatus" priority="1" />
+        </service>
+        <service id="tkuska_user.passwordchange" class="%tkuska_user.password_change_listener.class%">
+            <argument type="service" id="router" />
+            <argument type="service"  id="security.token_storage" />
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="string">%tkuska_user.password_expiration_time%</argument>
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="tkuska_user.util.user_manipulator" class="Tkuska\UserBundle\Util\UserManipulator">
+            <argument type="service" id="fos_user.user_manager" />
+        </service>
+
+    </services>
+</container>

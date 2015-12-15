@@ -1,0 +1,8 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('tkuska_user_creation_create') }}" {{ form_enctype(form) }} method="POST" class="tkuska_user_creation_create">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+</form>
