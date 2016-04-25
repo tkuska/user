@@ -27,6 +27,9 @@
         <service id="tkuska_user.util.user_manipulator" class="Tkuska\UserBundle\Util\UserManipulator">
             <argument type="service" id="fos_user.user_manager" />
         </service>
-
+        <service id="tkuska_user.profile.form.type" class="Tkuska\UserBundle\Form\Type\ProfileFormType">
+            <argument>%fos_user.model.user.class%</argument>
+            <tag name="form.type" alias="Tkuska\UserBundle\Form\Type\ProfileFormType" />
+        </service>
     </services>
 </container>
