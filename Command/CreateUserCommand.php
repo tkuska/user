@@ -29,7 +29,7 @@ class CreateUserCommand extends ContainerAwareCommand
                 new InputArgument('email', InputArgument::REQUIRED, 'The email'),
                 new InputArgument('password', InputArgument::REQUIRED, 'The password'),
                 new InputArgument('name', InputArgument::REQUIRED, 'The name'),
-                new InputArgument('lastName', InputArgument::REQUIRED, 'The last name'),
+                new InputArgument('last-name', InputArgument::REQUIRED, 'The last name'),
                 new InputOption('super-admin', null, InputOption::VALUE_NONE, 'Set the user as super admin'),
                 new InputOption('inactive', null, InputOption::VALUE_NONE, 'Set the user as inactive'),
                 new InputOption('force-change-password', null, InputOption::VALUE_NONE, 'Force to change password after first login'),
@@ -66,7 +66,7 @@ EOT
         $email = $input->getArgument('email');
         $password = $input->getArgument('password');
         $name = $input->getArgument('name');
-        $lastName = $input->getArgument('lastName');
+        $lastName = $input->getArgument('last-name');
         $inactive = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
         $changePassword = $input->getOption('force-change-password');
@@ -135,7 +135,7 @@ EOT
             );
             $input->setArgument('name', $name);
         }
-        if (!$input->getArgument('lastName')) {
+        if (!$input->getArgument('last-name')) {
             $lastName = $this->getHelper('dialog')->askHiddenResponseAndValidate(
                 $output,
                 'Please choose a last name:',
@@ -143,7 +143,7 @@ EOT
                     return $lastName;
                 }
             );
-            $input->setArgument('lastName', $lastName);
+            $input->setArgument('last-name', $lastName);
         }
     }
 }
