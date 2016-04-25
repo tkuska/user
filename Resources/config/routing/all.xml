@@ -3,11 +3,8 @@
 <routes xmlns="http://symfony.com/schema/routing"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
-
-    <import
-        resource="@TkuskaUserBundle/Resources/config/routing/creation.xml"
-        prefix="/creation" />
-    <import
-        resource="@TkuskaUserBundle/Resources/config/routing/edition.xml"
-        prefix="/edition" />
+    
+    <import resource="@FOSUserBundle/Resources/config/routing/all.xml" />
+    <import resource="@TkuskaUserBundle/Resources/config/routing/creation.xml" prefix="/creation" />
+    <import resource="@TkuskaUserBundle/Resources/config/routing/edition.xml" prefix="/edition" />
 </routes>
