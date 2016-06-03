@@ -25,8 +25,8 @@ class EditionFormType extends AbstractType
                 ->setMethod('PUT')
                 ->add('name', null, array('label' => 'form.name', 'translation_domain' => 'TkuskaUserBundle'))
                 ->add('lastName', null, array('label' => 'form.last_name', 'translation_domain' => 'TkuskaUserBundle'))
-                ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
                 ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+                ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
                 ->add('locked', null, array('label' => 'form.locked', 'required' => false))
         ;
     }
