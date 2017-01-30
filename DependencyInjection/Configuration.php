@@ -29,7 +29,8 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('address')->defaultValue('webmaster@example.com')->cannotBeEmpty()->end()
                         ->scalarNode('sender_name')->defaultValue('webmaster')->cannotBeEmpty()->end()
                     ->end()
-                ->end();
+                ->end()
+                ->scalarNode('mailer')->defaultValue('tkuska_user.mailer.default')->end();
         $this->addCreationSection($rootNode);
         $this->addEditionSection($rootNode);
 

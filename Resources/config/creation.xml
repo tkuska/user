@@ -20,7 +20,7 @@
         <!--Listenera też musimy nadpisać bo dopieru totaj generujemy hasło-->
         <service id="tkuska_user.listener.email_confirmation" class="Tkuska\UserBundle\EventListener\EmailConfirmationListener">
             <tag name="kernel.event_subscriber" />
-            <argument type="service" id="tkuska_user.mailer.default" />
+            <argument type="expression">service(parameter('tkuska_user.mailer'))</argument>
             <argument type="service" id="fos_user.util.token_generator" />
             <argument type="service" id="router" />
             <argument type="service" id="session" />
@@ -28,10 +28,23 @@
         </service>
 
         <!--Mailera tez musimy nadpisać bo przekazujemy tam jeszcze hasło-->
-        <service id="tkuska_user.mailer.default" class="Tkuska\UserBundle\Mailer\Mailer" public="false">
+        <service id="tkuska_user.mailer.default" class="Tkuska\UserBundle\Mailer\Mailer">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
             <argument type="service" id="templating" />
+            <argument type="collection">
+                <argument key="creation.template">%tkuska_user.creation.confirmation.template%</argument>
+                <argument key="from_email" type="collection">
+                    <argument key="creation">%tkuska_user.creation.confirmation.from_email%</argument>
+                </argument>
+            </argument>
+        </service>
+
+        <!--Mailer wykorzystywany gdy chcemy wysyłać wiadomości zawierające kod html-->
+        <service id="tkuska_user.mailer.swift" class="Tkuska\UserBundle\Mailer\SwiftMailer">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="twig" />
             <argument type="collection">
                 <argument key="creation.template">%tkuska_user.creation.confirmation.template%</argument>
                 <argument key="from_email" type="collection">
