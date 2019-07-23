@@ -17,13 +17,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class EditionController extends Controller
 {
-    protected $template;
-
-    public function __construct($template)
-    {
-        $this->template = $template;
-    }
-
     public function editAction(Request $request, $username)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -62,7 +55,7 @@ class EditionController extends Controller
             return $response;
         }
 
-        return $this->render($this->template, array(
+        return $this->render($this->getParameter('tkuska_user.creation.form.template'), array(
             'user' => $user,
             'form' => $form->createView(),
         ));
