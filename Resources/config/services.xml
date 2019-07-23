@@ -31,5 +31,11 @@
             <argument>%fos_user.model.user.class%</argument>
             <tag name="form.type" alias="Tkuska\UserBundle\Form\Type\ProfileFormType" />
         </service>
+        <service id="tkuska_user.creatiion.controller" class="Tkuska\UserBundle\Controller\CreationController">
+            <argument>%tkuska_user.creation.form.template%</argument>
+        </service>
+        <service id="tkuska_user.edition.controller" class="Tkuska\UserBundle\Controller\EditionnController">
+            <argument>%tkuska_user.edition.form.template%</argument>
+        </service>
     </services>
 </container>

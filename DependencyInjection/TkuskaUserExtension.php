@@ -26,6 +26,8 @@ class TkuskaUserExtension extends FOSUserExtension
 
         $container->setParameter('tkuska_user.password_expiration_time', $config['password_expiration_time']);
         $container->setParameter('tkuska_user.creation.force_change_password', $config['creation']['force_change_password']);
+        $container->setParameter('tkuska_user.creation.form.template', $config['creation']['form']['template']);
+        $container->setParameter('tkuska_user.edition.form.template', $config['edition']['form']['template']);
         $container->setParameter('tkuska_user.mailer', $config['mailer']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

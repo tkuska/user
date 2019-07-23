@@ -17,6 +17,13 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class CreationController extends Controller
 {
+    protected $template;
+
+    public function __construct($template)
+    {
+        $this->template = $template;
+    }
+
     public function createAction(Request $request)
     {
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
@@ -57,7 +64,7 @@ class CreationController extends Controller
             return $response;
         }
 
-        return $this->render('TkuskaUserBundle:Creation:create.html.twig', array(
+        return $this->render($this->template, array(
             'form' => $form->createView(),
         ));
     }
