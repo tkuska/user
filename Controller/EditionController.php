@@ -55,7 +55,7 @@ class EditionController extends Controller
             return $response;
         }
 
-        return $this->render($this->getParameter('tkuska_user.creation.form.template'), array(
+        return $this->render($this->getParameter('tkuska_user.edition.form.template'), array(
             'user' => $user,
             'form' => $form->createView(),
         ));
