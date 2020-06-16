@@ -40,7 +40,7 @@ class EditionController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(TkuskaUserEvents::EDITION_SUCCESS, $event);
 
