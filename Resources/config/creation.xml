@@ -28,7 +28,7 @@
         </service>
 
         <!--Mailera tez musimy nadpisać bo przekazujemy tam jeszcze hasło-->
-        <service id="tkuska_user.mailer.default" class="Tkuska\UserBundle\Mailer\Mailer">
+        <service id="tkuska_user.mailer.default" class="Tkuska\UserBundle\Mailer\Mailer" public="true">
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
             <argument type="service" id="templating" />
